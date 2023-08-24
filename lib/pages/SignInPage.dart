@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_app/animation/ScaleRoute.dart';
-import 'package:flutter_app/pages/FoodDetailsPage.dart';
 import 'package:flutter_app/pages/SignUpPage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -160,7 +158,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     InkWell(
                       onTap: () => {
-                      Navigator.push(context, ScaleRoute(page: SignUpPage()))
+                        Navigator.push(context, ScaleRoute(page: SignUpPage()))
                       },
                       child: Container(
                         child: Text(
