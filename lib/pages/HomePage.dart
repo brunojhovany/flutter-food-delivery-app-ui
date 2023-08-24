@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Color(0xFFFAFAFA),
         elevation: 0,
         title: Text(
-          "What would you like to eat?",
+          "Que se te antoja hoy?",
           style: TextStyle(
               color: Color(0xFF3a3737),
               fontSize: 16,

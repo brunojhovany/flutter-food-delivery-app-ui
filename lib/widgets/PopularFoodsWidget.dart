@@ -240,14 +240,14 @@ class PopularFoodTitle extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(
-            "Popluar Foods",
+            "Platillos populares",
             style: TextStyle(
                 fontSize: 20,
                 color: Color(0xFF3a3a3b),
                 fontWeight: FontWeight.w300),
           ),
           Text(
-            "See all",
+            "Ver todo",
             style: TextStyle(
                 fontSize: 16, color: Colors.blue, fontWeight: FontWeight.w100),
           )

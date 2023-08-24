@@ -65,7 +65,7 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                       filled: true,
                       prefixIcon: Icon(
-                        Icons.phone,
+                        Icons.email,
                         color: Color(0xFF666666),
                         size: defaultIconSize,
                       ),
@@ -74,7 +74,7 @@ class _SignInPageState extends State<SignInPage> {
                           color: Color(0xFF666666),
                           fontFamily: defaultFontFamily,
                           fontSize: defaultFontSize),
-                      hintText: "Phone Number",
+                      hintText: "correo electronico",
                     ),
                   ),
                   SizedBox(
@@ -107,7 +107,7 @@ class _SignInPageState extends State<SignInPage> {
                         fontFamily: defaultFontFamily,
                         fontSize: defaultFontSize,
                       ),
-                      hintText: "Password",
+                      hintText: "Contrasena",
                     ),
                   ),
                   SizedBox(
@@ -116,7 +116,7 @@ class _SignInPageState extends State<SignInPage> {
                   Container(
                     width: double.infinity,
                     child: Text(
-                      "Forgot your password?",
+                      "olvidaste tu contrasena?",
                       style: TextStyle(
                         color: Color(0xFF666666),
                         fontFamily: defaultFontFamily,
@@ -213,7 +213,7 @@ class SignInButtonWidget extends StatelessWidget {
             padding:
                 const EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
             child: Text(
-              "SIGN IN",
+              "INICIAR SESION",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 25.0,

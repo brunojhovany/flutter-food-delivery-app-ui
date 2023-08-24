@@ -64,6 +64,10 @@ flutter:
     - assets/images/topmenu/ic_pasta.png
     - assets/images/topmenu/ic_pizza.png
     - assets/images/topmenu/ic_sushi.png
+    - assets/images/topmenu/ic_garnachas.png
+    - assets/images/topmenu/ic_market.png
+    - assets/images/topmenu/ic_tlayudas.png
+    - assets/images/topmenu/ic_tostadas.png
     - assets/images/topmenu/ic_soft_drink.png
     - assets/images/popular_foods/ic_popular_food_1.png
     - assets/images/popular_foods/ic_popular_food_2.png
