@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/animation/ScaleRoute.dart';
+import 'package:flutter_app/models/products.dart';
 import 'package:flutter_app/pages/FoodDetailsPage.dart';
+import 'package:flutter_app/api_service.dart';
 
 class PopularFoodsWidget extends StatefulWidget {
   @override
@@ -258,75 +260,63 @@ class PopularFoodTitle extends StatelessWidget {
 }
 
 class PopularFoodItems extends StatelessWidget {
+  late Future<Products>? products;
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      scrollDirection: Axis.horizontal,
-      children: <Widget>[
-        PopularFoodTiles(
-            name: "Fried Egg",
-            imageUrl: "ic_popular_food_1",
-            rating: '4.9',
-            numberOfRating: '200',
-            price: '15.06',
-            slug: "fried_egg"),
-        PopularFoodTiles(
-            name: "Mixed Vegetable",
-            imageUrl: "ic_popular_food_3",
-            rating: "4.9",
-            numberOfRating: "100",
-            price: "17.03",
-            slug: ""),
-        PopularFoodTiles(
-            name: "Salad With Chicken",
-            imageUrl: "ic_popular_food_4",
-            rating: "4.0",
-            numberOfRating: "50",
-            price: "11.00",
-            slug: ""),
-        PopularFoodTiles(
-            name: "Mixed Salad",
-            imageUrl: "ic_popular_food_5",
-            rating: "4.00",
-            numberOfRating: "100",
-            price: "11.10",
-            slug: ""),
-        PopularFoodTiles(
-            name: "Red meat,Salad",
-            imageUrl: "ic_popular_food_2",
-            rating: "4.6",
-            numberOfRating: "150",
-            price: "12.00",
-            slug: ""),
-        PopularFoodTiles(
-            name: "Mixed Salad",
-            imageUrl: "ic_popular_food_5",
-            rating: "4.00",
-            numberOfRating: "100",
-            price: "11.10",
-            slug: ""),
-        PopularFoodTiles(
-            name: "Potato,Meat fry",
-            imageUrl: "ic_popular_food_6",
-            rating: "4.2",
-            numberOfRating: "70",
-            price: "23.0",
-            slug: ""),
-        PopularFoodTiles(
-            name: "Fried Egg",
-            imageUrl: "ic_popular_food_1",
-            rating: '4.9',
-            numberOfRating: '200',
-            price: '15.06',
-            slug: "fried_egg"),
-        PopularFoodTiles(
-            name: "Red meat,Salad",
-            imageUrl: "ic_popular_food_2",
-            rating: "4.6",
-            numberOfRating: "150",
-            price: "12.00",
-            slug: ""),
-      ],
+    products = ApiService().getProducts();
+    return FutureBuilder<Products>(
+      future: products,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return _buildPopularFoodItems(snapshot.data!);
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error}');
+        }
+        return Center(child: CircularProgressIndicator());
+      },
     );
+  }
+}
+
+class _buildPopularFoodItems extends StatelessWidget {
+  final Products products;
+
+  _buildPopularFoodItems(this.products);
+
+  @override
+  Widget build(BuildContext context) {
+    if (products.products.length == 0) {
+      return Center(
+        child: Text("No hay productos"),
+      );
+    }
+
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: products.products.length,
+      itemBuilder: (context, index) {
+        return PopularFoodTiles(
+            name: products.products[index].name,
+            imageUrl: "ic_popular_food_1",
+            rating: products.products[index].productAttrs.rating.toString(),
+            numberOfRating: '200',
+            price: products.products[index].productAttrs.rating.toString(),
+            slug: "fried_egg");
+      },
+    );
+
+    // return ListView(
+    //   scrollDirection: Axis.horizontal,
+    //   children: <Widget>[
+    //     PopularFoodTiles(
+    //         name: "Fried Egg",
+    //         imageUrl: "ic_popular_food_1",
+    //         rating: '4.9',
+    //         numberOfRating: '200',
+    //         price: '15.06',
+    //         slug: "fried_egg"),
+    //   ],
+    // );
   }
 }
